@@ -13,14 +13,14 @@ y_train=lb.fit_transform(y_train)
 y_test=lb.transform(y_test)
 
 # Model creation
-model = models.Sequential([
-    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
-    layers.MaxPooling2D((2, 2)),
-    layers.Conv2D(64, (3, 3), activation='relu'),
-    layers.MaxPooling2D((2, 2)),
+model=models.sequential([
+    layers.Conv2D(32,(3,3),activation='relu',input_shape=(28,28,1)),
+    layers.MaxPooling2D((2,2)),
+    layers.Conv2D(64,(3,3),activation='relu'),
+    layers.MaxPooling2D((2,2)),
     layers.Flatten(),
-    layers.Dense(128, activation='relu'),
-    layers.Dense(10, activation='softmax')
+    layers.Dense(200,activation='relu'),
+    layers.dense(10,activation='softmax')
 ])
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 model.summary()
