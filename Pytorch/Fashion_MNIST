@@ -1,0 +1,44 @@
+
+# FashionMNIST data contains 70,000 images, training set of 60,000 images, testing set of 10,000 images
+# it consist 10 different types of fashion wearing objects, each objects consist 7,000 image samples
+# each object image sample consist 6,000 images for training & 1,000 images for testing
+
+
+import torch.utils.data.dataloader as data_loader
+import torchvision
+import torchvision.transforms as transforms
+
+
+
+# Downloading FashionMNIST Training Data for Pytorch Model (60,000 Images)
+try:
+    training_data = torchvision.datasets.FashionMNIST(
+        root='./data/FashionMNIST',
+        train=True,
+        download=True,                                                   # <- Extract
+        transform=transforms.Compose([transforms.ToTensor])                 
+    )
+    training_load= data_loader(training_data)                            # <- Load
+    
+    print("traning data sucessfully downloaded and loaded at instance variable -> 'training_load' ")
+    
+except:
+    print("sorry training data download unsuccesful, check your internet connection")
+
+
+
+
+# Downloading FashionMNIST Testing Data for pytorch Model (10,000 Images)   
+try:
+    testing_data = torchvision.datasets.FashionMNIST(
+        root='./data/FashionMNIST',
+        train=True,                                                       # <- Extract
+        download=True,
+        transform=transforms.Compose([transforms.ToTensor()])
+    )
+    testing_load=data_loader(testing_data)                                # <- Load
+    
+    print("testing data downloaded sucessfully and loaded at instance variable -> 'testing_load' ")
+    
+except:
+    print("sorry testing data download unsucessful, check your internet connection")
